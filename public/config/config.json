@@ -1,0 +1,18 @@
+{
+  "CONTRACT_ADDRESS": "0x02bA2a8c02e182E441030bE9fc6fA2B3D6452d2A",
+  "SCAN_LINK": "https://nova-explorer.arbitrum.io/address/0x02bA2a8c02e182E441030bE9fc6fA2B3D6452d2A",
+  "NETWORK": {
+    "NAME": "Arbitrum Nova",
+    "SYMBOL": "ETH",
+    "ID": 42170
+  },
+  "NFT_NAME": "DEGEN MUTOONZ",
+  "SYMBOL": "DMTNZ",
+  "MAX_SUPPLY": 888,
+  "WEI_COST": 2500000000000000,
+  "DISPLAY_COST": 0.0025,
+  "GAS_LIMIT": 285000,
+  "MARKETPLACE": "Stratos",
+  "MARKETPLACE_LINK": "https://nova.stratosnft.io/collection/degen-mutoonz",
+  "SHOW_BACKGROUND": true
+}
