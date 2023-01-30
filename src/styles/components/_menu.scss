@@ -1,0 +1,59 @@
+#menu {
+    position: absolute;
+    right: 1.5rem;
+    top: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+
+    @media (max-width: 500px) {
+        top: 100px;
+        transform: rotate(270deg);
+        right: -2rem;
+        top: 5.5rem;
+     }
+}
+
+.bubble {
+    /* cap the width */
+    max-width: 500px;
+    /* give ample whitespace around and inside of the container */
+    margin: 2rem 0;
+    padding: 0.2rem 1.25rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    background: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(25)" opacity="0.3" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g  fill="%23250E17"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>'),
+      #fff;
+    background-size: 12px, 100%;
+    /* solid border */
+    border: 0.4rem solid #000;
+    /* position relative for the :before pseudo element */
+    position: relative;
+    color: #222;
+    text-decoration: none;
+  }
+  
+  /* for the highlight container change the solid backgorund to a yellow-ish hue */
+  .bubble:hover {
+    background: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(25)" opacity="0.8" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g  fill="%23d68810"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>'),
+      #feb33c;
+    background-size: 13px, 100%;
+  }
+
+  /* for every .bubble container add a solid background behind the container itself, slightly offset */
+  .bubble:before {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    top: 0.15rem;
+    width: 100%;
+    height: 100%;
+    /* with the same texture, but different color, for both the texture and the background */
+    background: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(35)" opacity="1" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="%23250E17"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>'),
+      #000;
+    background-size: 12px, 100%;
+    border: 0.4rem solid #000;
+    z-index: -5;
+  }

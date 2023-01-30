@@ -1,14 +1,19 @@
 ul.socialmedia {
-    position: relative;
-    top: 0;
-    right: 0;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
     display: flex;
     flex-direction: row;
     margin-bottom: 1rem;
 
+    @media (max-width: 500px) {
+       flex-direction: column;
+    }
+
     a {
         display: block;
         margin-right: 1rem;
+        margin-bottom: 1rem;
         width: 60px;
         height: 60px;
         background-repeat: no-repeat;
@@ -31,6 +36,9 @@ ul.socialmedia {
     
     .arbitrum {
         background-image: url(../../assets/images/arbitrum.png);
+    }
+    .tofunft {
+        background-image: url(../../assets/images/tofunft.svg);
     }
 }
 

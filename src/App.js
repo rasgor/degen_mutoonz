@@ -123,6 +123,8 @@ function App() {
     SHOW_BACKGROUND: false,
   });
 
+  const isDev = () =>   !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+
   const Parallax = (e) => {
     const elem = document.querySelector("#parallax");
 
@@ -189,6 +191,9 @@ function App() {
 
   const getData = () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
+
+      window.contract = blockchain.smartContract;
+
       dispatch(fetchData(blockchain.account));
     }
   };
@@ -212,12 +217,49 @@ function App() {
     getData();
   }, [blockchain.account]);
 
+
+  useEffect(() => {
+    const sections = [...document.querySelectorAll("section")];
+    
+let options = {
+  rootMargin: "0px",
+  threshold: 0.75,
+};
+
+const callback = (entries, observer) => {
+  entries.forEach((entry) => {
+    const { target } = entry;
+
+    if (entry.intersectionRatio >= 0.75) {
+      target.classList.add("is-visible");
+    } else {
+      target.classList.remove("is-visible");
+    }
+  });
+};
+
+const observer = new IntersectionObserver(callback, options);
+
+sections.forEach((section, index) => {
+  const sectionChildren = [...section.querySelector("[data-content]").children];
+  if (sectionChildren) {
+
+  sectionChildren.forEach((el, index) => {
+    el.style.setProperty("--delay", `${index * 250}ms`);
+  });
+
+  observer.observe(section);
+}
+});
+  }, []);
+
   return (
     <s.Screen>
-      <section>
-
-      </section>
-      <section>
+      <section className="section" style={{ display: isDev()?'':'none' }}>
+      <div
+         className="section__content"
+         data-content
+         ></div>
       <s.Background
         id="parallax"
         flex={1}
@@ -225,12 +267,9 @@ function App() {
         style={{ padding: 24, backgroundColor: "var(--primary)" }}
         image={CONFIG.SHOW_BACKGROUND ? "/config/images/bg1.png" : null} 
         onMouseMove={(e) => {
-          Parallax(e);
+          //Parallax(e);
         }}
       >
-        <StyledLogo alt={"DEGEN MUTOONZ - LOGO"} src={"/config/images/logo.png"} />
-        <s.SpacerSmall />
-        <Socialmedia />
         <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
           <s.Container flex={1} jc={"center"} ai={"center"}>
             <StyledImg alt={"DEGEN MUTOONZ"} src={"/config/images/example.gif"} style={{ display: "none"}} />
@@ -321,12 +360,12 @@ function App() {
                         lineHeight: "1.25"
                       }}
                     >
-                      <p><u>Useful links for preparation</u></p>
+                    </s.TextDescription>
+                    <p><u>Useful links for preparation</u></p>
                       <ul>
                         <li><a href="https://chainlist.org/chain/42170" target="_blank">Add</a> Arbitrum Nova Chain to your Metamask</li>
                         <li><a href="https://bridge.arbitrum.io/" target="_blank">Bridge</a> some ETH to Arbitrum Nova Chain</li>
                       </ul>
-                    </s.TextDescription>
                     <s.SpacerLarge />
                     <StyledButton
                       onClick={(e) => {
@@ -450,7 +489,142 @@ function App() {
         </s.Container>
       </s.Background>
       </section>
-      <section>
+      <section className="section">
+        <Socialmedia></Socialmedia>
+        <ul id="menu">
+          <li><a href="#whatsnext" className="bubble bubble--highlight">What's next</a></li>
+        </ul>
+      <div id="slogan">
+        <img src="config/images/mutoonz-title.png" />
+      </div>
+      <div
+         className="section__content"
+         data-content
+         >
+      <div className="presentation">
+      <div id="bandit">
+        <div className="inner">
+        <div className="bandit"></div>
+        <div className="eyes"></div>
+        <div className="money"></div>
+      </div>
+      </div>
+      <div id="intro">
+        <div className="box box2">
+          <div className="evenboxinner">
+            <h1>888 DEGEN MUTOONZ ready to conquer the world.</h1>
+            <p>Beware of the danger ahead of us. Equip yourself with a mutoon to be prepared for the things 
+              to come on our future journey through tough times. So don't lose any time and grab your DEGEN MUTOONZ.</p>
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
+      <div className="pie">
+    <p className="p1"></p>
+    <p className="p2"></p>
+    <p className="p3"></p>
+    <p className="p4"></p>
+    <p className="p5"></p>
+    <p className="p6"></p>
+    <p className="p7"></p>
+    <p className="p8"></p>
+    <p className="p9"></p>
+    <p className="p10"></p>
+    <p className="p11"></p>
+    <p className="p12"></p>
+    <p className="p13"></p>
+    <p className="p14"></p>
+    <p className="p15"></p>
+    <p className="p16"></p>
+    <p className="p17"></p>
+    <p className="p18"></p>
+    <p className="p19"></p>
+    <p className="p20"></p>
+    <p className="p21"></p>
+    <p className="p22"></p>
+    <p className="p23"></p>
+    <p className="p24"></p>
+    <p className="p25"></p>
+    <p className="p26"></p>
+    <p className="p27"></p>
+    <p className="p28"></p>
+    <p className="p29"></p>
+    <p className="p30"></p>
+  </div>
+      </section>
+      <section className="section whatsnext" id="whatsnext">
+      <div
+         className="section__content"
+         data-content
+         >
+          <div>
+          <div className="box box2">
+            <div className="evenboxinner">
+              <p>
+        Prevent your DEGEN Mutoonz from catching a cold and a worse cough! Get your DNA injection now!</p>
+
+              <p><a href="#" className="bubble">INJECTION COMMING SOON !</a></p>
+        </div>
+        </div>
+        </div>
+            <div className="injections">
+              <div className="normal">
+              <div className="box box2">
+          <div className="evenboxinner">
+          <h3><a href="https://opensea.io/assets/arbitrum-nova/0xdae44eab390c3aa63ee5868c4166a09e35515058/1" title="Get your injection on Opensea">DNA Injection</a></h3>
+          </div>
+          </div>
+              </div>
+              <div className="deluxe">
+              <div className="box box2">
+          <div className="evenboxinner">
+          <h3><a href="https://opensea.io/assets/arbitrum-nova/0xdae44eab390c3aa63ee5868c4166a09e35515058/2" title="Get your injection on Opensea">DNA Injection - Deluxe</a></h3>
+          </div>
+          </div>
+              </div>
+              <div className="golden">
+              <div className="box box2">
+          <div className="evenboxinner">
+          <h3><a href="https://opensea.io/assets/arbitrum-nova/0xdae44eab390c3aa63ee5868c4166a09e35515058/3" title="Get your injection on Opensea">DNA Injection - Golden shot</a></h3>
+          </div>
+          </div>
+              </div>
+            </div>
+          </div>
+      </section>
+      <section className="section team">
+      <div
+         className="section__content"
+         data-content
+         >
+          <div>
+            <div className="box box2">
+          <div className="evenboxinner">
+          <h1>Team</h1>
+          </div>
+          </div>
+          </div>
+          <div>
+          <div className="profile box box2">
+          <div className="evenboxinner">
+          <h3>RASGOR</h3>
+          <span>Tech</span>
+          <div className="rasgor"></div>
+          </div>
+          </div>
+          <div className="profile box box2">
+          <div className="evenboxinner">
+          <h3>
+            Fantomas
+          </h3>
+          <span>Design</span>
+          <div className="fantomas"></div>
+          </div>
+          </div>
+          </div>
+         </div>
+         <div className="copyright">© DEGEN MUTOONZ Corp 2022</div>
       </section>
     </s.Screen>
   );

@@ -1,0 +1,54 @@
+
+  #intro {
+    display: flex;
+    align-items: center;
+    
+    .box {
+        width: 90% !important;
+    }
+  }
+
+  div#bandit {
+
+    height: 85vh;
+    align-items: flex-end;
+
+    @media (max-width: 790px) {
+        height: 50vh;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    .innner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .eyes,
+    .money,
+    .bandit {
+        width: 100%;
+        height: 100%;
+        background-image: url(../../assets/images/bandit-eyes.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -2;
+    }
+
+    .money {
+        background-image: url(../../assets/images/bandit-money.png); 
+        z-index: -1;
+    }
+
+    .bandit {
+        background-image: url(../../assets/images/bandit-body.png); 
+        z-index: 0;
+    }
+}

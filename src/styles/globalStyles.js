@@ -4,7 +4,7 @@ export const Section = styled.section`
 `;
 
 // Used for wrapping a page component
-export const Screen = styled.div`
+/*export const Screen = styled.main`
   background-color: var(--primary);
   background-image: ${({ image }) => (image ? `url(${image})` : "none")};
   background-size: cover;
@@ -13,7 +13,9 @@ export const Screen = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-`;
+`;*/
+
+export const Screen = styled.main``;
 
 // Used for providing space between components
 export const SpacerXSmall = styled.div`

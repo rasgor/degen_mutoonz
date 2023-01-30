@@ -11,6 +11,9 @@ const connectRequest = () => {
 };
 
 const connectSuccess = (payload) => {
+
+  console.log(payload.smartContract.methods.paused());
+
   return {
     type: "CONNECTION_SUCCESS",
     payload: payload,
@@ -53,19 +56,6 @@ export const connect = () => {
     if (metamaskIsInstalled) {
       Web3EthContract.setProvider(ethereum);
       let web3 = new Web3(ethereum);
-
-      let accounts = await web3.eth.getAccounts();
-      let selectedAccount = accounts[0];
-      let sender = selectedAccount;
-
-      let wei_balance = await web3.eth.getBalance(sender);
-
-      let smartcontract = new web3.eth.Contract(abi,CONFIG.CONTRACT_ADDRESS,{from:sender});
-      let balance = await smartcontract.methods.walletOfOwner(sender).call();
-
-      console.log(balance);
-    
-
       try {
         const accounts = await ethereum.request({
           method: "eth_requestAccounts",
